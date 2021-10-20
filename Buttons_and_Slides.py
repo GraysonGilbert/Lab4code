@@ -26,11 +26,11 @@ form = cgi.FieldStorage()
 print("selection = " + form.getvalue('option'))
 
 form = cgi.FieldStorage() # get POST data
-if ('option' == 'led1'): # changed from OFF to ON
+if (form.getValue('option') == 'led1'): # changed from OFF to ON
   GPIO.output(ledPin1, 1)
   GPIO.output(ledPin3, 1)
 
-if ('option' == 'led2'):
+if (form.getValue('option') == 'led2'):
   GPIO.output(ledPin1, 0)
   GPIO.output(ledPin3, 0)
 
