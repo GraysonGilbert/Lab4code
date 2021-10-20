@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #importing modules
-import RPI.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 import json
 
