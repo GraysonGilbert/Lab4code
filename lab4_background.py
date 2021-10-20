@@ -6,6 +6,7 @@ import time
 import json
 
 
+
 #Led Pin Numbers
 ledPin1 = 19
 ledPin2 = 13
