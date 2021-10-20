@@ -1,8 +1,44 @@
 #!/usr/bin/python37all
+
+
+import RPi.GPIO as GPIO
 import cgi
-print("Content-type: text/html\n\n")
-data = cgi.FieldStorage()
-print("selection = " + data.getvalue('option'))
+
+# import and enable special exception handler for better error reporting
+import cgitb
+cgitb.enable()
+
+ledPin1 = 19
+ledPin2 = 13
+ledPin3 = 26
+
+# GPIO setup:
+GPIO.setmode(GPIO.BCM)      # choose pin numbering convention (alt = BOARD)
+GPIO.setwarnings(False)     # ignore warnings due to multiple scripts at same time
+GPIO.setup(ledPin1, GPIO.OUT)
+GPIO.setup(ledPin2, GPIO.OUT)
+GPIO.setup(ledPin3, GPIO.OUT)
+
+
+
+#print("Content-type: text/html\n\n")
+#data = cgi.FieldStorage()
+#print("selection = " + form.getvalue('option'))
+
+
+form = cgi.FieldStorage() # get POST data
+if ('led1' in form): # changed from OFF to ON
+  GPIO.output(ledPin1, 1)
+  GPIO.output(ledPin2, 0)
+  GPIO.output(ledPin3, 0)
+elif ('led2' in form): 
+  GPIO.output(ledPin1, 0)
+  GPIO.output(ledPin2, 1)
+  GPIO.output(ledPin3, 0)
+elif ('led3' in form):
+  GPIO.output(ledPin1, 0)
+  GPIO.output(ledPin2, 0)
+  GPIO.output(ledPin3, 1)
 
 slideData = cgi.FieldStorage()
 if 'option' == 'led1':
