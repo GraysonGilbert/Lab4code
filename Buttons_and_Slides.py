@@ -25,7 +25,7 @@ print('Adjust Brightness of Led <br>')
 print('<input type="range" name="slider1" min ="0" max="100" value ="%s"/><br>' %s1)
 
 LedData ={}
-LedData = {'option':LED, 'slider':s1}
+LedData = {'option':LED, 'slider1':s1}
 
 with open('Lab4_text.txt', 'w') as f:
   json.dump(LedData,f)
