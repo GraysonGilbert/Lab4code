@@ -1,44 +1,39 @@
 #!/usr/bin/python37all
 
-
-import RPi.GPIO as GPIO
+#import necessary modules
 import cgi
+import json
 
-# import and enable special exception handler for better error reporting
-import cgitb
+import cgitb # import and enable special exception handler for better error reporting
+
 cgitb.enable()
 
-ledPin1 = 19
-ledPin2 = 13
-ledPin3 = 26
+data = cgi.FieldStorage()
 
-# GPIO setup:
-GPIO.setmode(GPIO.BCM)      # choose pin numbering convention (alt = BOARD)
-GPIO.setwarnings(False)     # ignore warnings due to multiple scripts at same time
-GPIO.setup(ledPin1, GPIO.OUT)
-GPIO.setup(ledPin2, GPIO.OUT)
-GPIO.setup(ledPin3, GPIO.OUT)
-
+s1 = data.getvalue('slider1')
+LED = data.getvalue('option')
 
 
 print("Content-type: text/html\n\n")
-form = cgi.FieldStorage()
-print("selection = " + form.getvalue('option'))
+print('<html>')
+print('<form action="/cgi-bin/led.py" method="POST" target="_self">')
+print('<input type="radio" name="option" value="led1"> Led 1 <br>')
+print('<input type="radio" name="option" value="led2"> Led 2 <br>')
+print('<input type="radio" name="option" value="led3"> Led 3 <br>')
+print('<br>')
+print('Adjust Brightness of Led <br>')
+print('<input type="range" name="slider1" min ="0" max="100" value ="%s"/><br>' %s1)
 
-form = cgi.FieldStorage() # get POST data
-if (form.getvalue('option') == 'led1'): # changed from OFF to ON
-  GPIO.output(ledPin1, 1)
-  GPIO.output(ledPin3, 1)
+LedData ={}
+LedData = {'option':LED, 'slider':s1}
 
-if (form.getvalue('option') == 'led2'):
-  GPIO.output(ledPin1, 0)
-  GPIO.output(ledPin3, 0)
+with open('Lab4_text.txt', 'w') as f:
+  json.dump(LedData,f)
+
+print('<input type="submit" value="submit">')
+
+print('</form>')
+
+print('</html>')
 
 
-
-##if 'option' == 'led1':
- ## print("s1 = " + slideData.getvalue('slider1') + '<br>')
-##if 'option' == 'led2':
- ## print("s2 = " + slideData.getvalue('slider2') + '<br>')
-##if 'option' == 'led3':
- ## print("s3 = " + slideData.getvalue('slider3') + '<br>')
