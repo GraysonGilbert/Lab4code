@@ -21,29 +21,17 @@ GPIO.setup(ledPin3, GPIO.OUT)
 
 
 
-#print("Content-type: text/html\n\n")
-#data = cgi.FieldStorage()
-#print("selection = " + form.getvalue('option'))
+print("Content-type: text/html\n\n")
+form = cgi.FieldStorage()
+print("selection = " + form.getvalue('option'))
 
 
-form = cgi.FieldStorage() # get POST data
-if ('led1' in form): # changed from OFF to ON
-  GPIO.output(ledPin1, 1)
-  GPIO.output(ledPin2, 0)
-  GPIO.output(ledPin3, 0)
-elif ('led2' in form): 
-  GPIO.output(ledPin1, 0)
-  GPIO.output(ledPin2, 1)
-  GPIO.output(ledPin3, 0)
-elif ('led3' in form):
-  GPIO.output(ledPin1, 0)
-  GPIO.output(ledPin2, 0)
-  GPIO.output(ledPin3, 1)
 
-slideData = cgi.FieldStorage()
-if 'option' == 'led1':
-  print("s1 = " + slideData.getvalue('slider1') + '<br>')
-if 'option' == 'led2':
-  print("s2 = " + slideData.getvalue('slider2') + '<br>')
-if 'option' == 'led3':
-  print("s3 = " + slideData.getvalue('slider3') + '<br>')
+
+##slideData = cgi.FieldStorage()
+##if 'option' == 'led1':
+ ## print("s1 = " + slideData.getvalue('slider1') + '<br>')
+##if 'option' == 'led2':
+ ## print("s2 = " + slideData.getvalue('slider2') + '<br>')
+##if 'option' == 'led3':
+ ## print("s3 = " + slideData.getvalue('slider3') + '<br>')
