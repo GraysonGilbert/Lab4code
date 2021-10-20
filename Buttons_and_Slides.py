@@ -10,8 +10,8 @@ cgitb.enable()
 
 data = cgi.FieldStorage()
 
-s1 = data.getvalue('slider1')
-LED = data.getvalue('option')
+s1 = data.getvalue("slider1")
+LED = data.getvalue("option")
 
 
 print("Content-type: text/html\n\n")
