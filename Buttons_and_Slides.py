@@ -21,9 +21,9 @@ GPIO.setup(ledPin3, GPIO.OUT)
 
 
 
-##print("Content-type: text/html\n\n")
+print("Content-type: text/html\n\n")
 form = cgi.FieldStorage()
-##print("selection = " + form.getvalue('option'))
+print("selection = " + form.getvalue('option'))
 
 form = cgi.FieldStorage() # get POST data
 if ('led1' in form): # changed from OFF to ON
