@@ -16,7 +16,7 @@ LED = data.getvalue("option")
 
 print("Content-type: text/html\n\n")
 print('<html>')
-print('<form action="/cgi-bin/led.py" method="POST" target="_self">')
+print('<form action="/cgi-bin/led.py" method="POST">')
 print('<input type="radio" name="option" value="led1"> Led 1 <br>')
 print('<input type="radio" name="option" value="led2"> Led 2 <br>')
 print('<input type="radio" name="option" value="led3"> Led 3 <br>')
